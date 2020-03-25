@@ -1,9 +1,13 @@
-﻿namespace TestMono5Sil
+﻿using System;
+
+namespace TestMono5Sil
 {
 	partial class TestForm : System.Windows.Forms.Form
 	{
-		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.Button button1;
+		private System.Windows.Forms.Button _fileChooserButton;
+		private System.Windows.Forms.Label _fileChosenLabel;
+		private System.Windows.Forms.Button _wizardButton;
+		private System.Windows.Forms.Label _wizardOutputLabel;
 
 		/// <summary>
 		/// Required designer variable.
@@ -31,44 +35,67 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.label1 = new System.Windows.Forms.Label();
-			this.button1 = new System.Windows.Forms.Button();
+			this._fileChooserButton = new System.Windows.Forms.Button();
+			this._fileChosenLabel = new System.Windows.Forms.Label();
+			this._wizardButton = new System.Windows.Forms.Button();
+			this._wizardOutputLabel = new System.Windows.Forms.Label();
 			this.SuspendLayout();
-			// 
-			// label1
-			// 
-			this.label1.AutoSize = true;
-			this.label1.Location = new System.Drawing.Point(12, 9);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(195, 17);
-			this.label1.TabIndex = 0;
-			this.label1.Text = "No file has been selected yet.";
 			// 
 			// button1
 			// 
-			this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-			this.button1.Location = new System.Drawing.Point(175, 106);
-			this.button1.Name = "button1";
-			this.button1.Size = new System.Drawing.Size(120, 23);
-			this.button1.TabIndex = 1;
-			this.button1.Text = "Choose File ...";
-			this.button1.UseVisualStyleBackColor = true;
-			this.button1.Click += new System.EventHandler(this.button1_Click);
+			this._fileChooserButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+			this._fileChooserButton.Location = new System.Drawing.Point(9, 9);
+			this._fileChooserButton.Name = "button1";
+			this._fileChooserButton.Size = new System.Drawing.Size(120, 23);
+			this._fileChooserButton.TabIndex = 0;
+			this._fileChooserButton.Text = "Choose File ...";
+			this._fileChooserButton.UseVisualStyleBackColor = true;
+			this._fileChooserButton.Click += new System.EventHandler(this._fileChooserButton_Click);
+			// 
+			// label1
+			// 
+			this._fileChosenLabel.AutoSize = true;
+			this._fileChosenLabel.Location = new System.Drawing.Point(138, 11);
+			this._fileChosenLabel.Name = "label1";
+			this._fileChosenLabel.Size = new System.Drawing.Size(195, 17);
+			this._fileChosenLabel.TabIndex = 1;
+			this._fileChosenLabel.Text = "No file has been selected yet.";
+			// 
+			// button2
+			// 
+			this._wizardButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+			this._wizardButton.Location = new System.Drawing.Point(9, 40);
+			this._wizardButton.Name = "button2";
+			this._wizardButton.Size = new System.Drawing.Size(120, 23);
+			this._wizardButton.TabIndex = 2;
+			this._wizardButton.Text = "Start Wizard ...";
+			this._wizardButton.UseVisualStyleBackColor = true;
+			this._wizardButton.Click += new System.EventHandler(this._wizardButton_Click);
+			// 
+			// label2
+			// 
+			this._wizardOutputLabel.AutoSize = true;
+			this._wizardOutputLabel.Location = new System.Drawing.Point(138, 42);
+			this._wizardOutputLabel.Name = "label2";
+			this._wizardOutputLabel.Size = new System.Drawing.Size(195, 17);
+			this._wizardOutputLabel.TabIndex = 3;
+			this._wizardOutputLabel.Text = "The wizard has not yet returned a value.";
 			// 
 			// TestForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(462, 153);
-			this.Controls.Add(this.button1);
-			this.Controls.Add(this.label1);
+			this.ClientSize = new System.Drawing.Size(662, 153);
+			this.Controls.Add(this._fileChooserButton);
+			this.Controls.Add(this._fileChosenLabel);
+			this.Controls.Add(this._wizardButton);
+			this.Controls.Add(this._wizardOutputLabel);
 			this.Name = "TestForm";
 			this.Text = "TestForm";
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
 		}
-
 		#endregion
 	}
 }
