@@ -19,16 +19,26 @@ namespace TestMono5Sil
 
 		private void button1_Click(object sender, System.EventArgs e)
 		{
-			var dlg = new DialogAdapters.OpenFileDialogAdapter
+			try
 			{
-				Multiselect = false,
-				CheckFileExists = true
-			};
-			var result = dlg.ShowDialog();
-			if (result == DialogResult.OK)
-				label1.Text = dlg.FileName.Replace("\\", "/");
-			else
-				label1.Text = @"NO FILE SELECTED";
+				using (var dlg = new DialogAdapters.OpenFileDialogAdapter
+				{
+					Multiselect = false,
+					CheckFileExists = true
+				})
+				{
+					var result = dlg.ShowDialog();
+					if (result == DialogResult.OK)
+						label1.Text = dlg.FileName.Replace("\\", "/");
+					else
+						label1.Text = @"NO FILE SELECTED";
+				}
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine("CRASH: {0}", ex.Message);
+				Console.WriteLine(ex.StackTrace);
+			}
 		}
 	}
 }
