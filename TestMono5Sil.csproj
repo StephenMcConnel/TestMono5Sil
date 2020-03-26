@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -33,8 +33,35 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DialogAdapters, Version=0.1.4.30000, Culture=neutral, PublicKeyToken=7dc842182b0626dc, processorArchitecture=MSIL">
+    <Reference Include="DialogAdapters">
       <HintPath>packages\DialogAdapters.0.1.4.30000\lib\net45\DialogAdapters.dll</HintPath>
+    </Reference>
+    <Reference Include="Geckofx-Core">
+      <HintPath>packages\Geckofx45.64.Linux.45.0.37\lib\net40\Geckofx-Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Geckofx-Winforms">
+      <HintPath>packages\Geckofx45.64.Linux.45.0.37\lib\net40\Geckofx-Winforms.dll</HintPath>
+    </Reference>
+    <Reference Include="L10NSharp">
+      <HintPath>packages\L10NSharp.4.0.0\lib\net461\L10NSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="SIL.Core">
+      <HintPath>packages\SIL.Core.7.0.0\lib\net461\SIL.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="SIL.Core.Desktop">
+      <HintPath>packages\SIL.Core.Desktop.7.0.0\lib\net461\SIL.Core.Desktop.dll</HintPath>
+    </Reference>
+    <Reference Include="SIL.Windows.Forms">
+      <HintPath>packages\SIL.Windows.Forms.7.0.0\lib\net461\SIL.Windows.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="SIL.Windows.Forms.GeckoBrowserAdapter">
+      <HintPath>packages\SIL.Windows.Forms.GeckoBrowserAdapter.7.0.0\lib\net461\SIL.Windows.Forms.GeckoBrowserAdapter.dll</HintPath>
+    </Reference>
+    <Reference Include="SIL.Windows.Forms.WritingSystems">
+      <HintPath>packages\SIL.Windows.Forms.WritingSystems.7.0.0\lib\net461\SIL.Windows.Forms.WritingSystems.dll</HintPath>
+    </Reference>
+    <Reference Include="SIL.WritingSystems">
+      <HintPath>packages\SIL.WritingSystems.7.0.0\lib\net461\SIL.WritingSystems.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -79,9 +106,65 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Wizard\LanguageIdControl.cs" />
+    <Compile Include="Wizard\LanguageIdControl.Designer.cs">
+      <DependentUpon>LanguageIdControl.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Wizard\LanguageIdControl.resx">
+      <DependentUpon>LanguageIdControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <Compile Include="Wizard\LanguageFontDetails.cs" />
+    <Compile Include="Wizard\LanguageFontDetails.Designer.cs">
+      <DependentUpon>LanguageFontDetails.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Wizard\LanguageFontDetails.resx">
+      <DependentUpon>LanguageFontDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <Compile Include="Wizard\TestWizard.cs" />
+    <Compile Include="Wizard\TestWizard.Designer.cs">
+      <DependentUpon>TestWizard.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Wizard\TestWizard.resx">
+      <DependentUpon>TestWizard.cs</DependentUpon>
+    </EmbeddedResource>
+    <Compile Include="Wizard\KindOfCollectionControl.cs" />
+    <Compile Include="Wizard\KindOfCollectionControl.Designer.cs">
+      <DependentUpon>KindOfCollectionControl.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Wizard\KindOfCollectionControl.resx">
+      <DependentUpon>KindOfCollectionControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <Compile Include="Wizard\CollectionNameControl.cs" />
+    <Compile Include="Wizard\CollectionNameControl.Designer.cs">
+      <DependentUpon>CollectionNameControl.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Wizard\CollectionNameControl.resx">
+      <DependentUpon>CollectionNameControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <Compile Include="Wizard\LanguageLocationControl.Designer.cs">
+      <DependentUpon>LanguageLocationControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Wizard\LanguageLocationControl.cs" />
+    <EmbeddedResource Include="Wizard\LanguageLocationControl.resx">
+      <DependentUpon>LanguageLocationControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <Compile Include="Wizard\CollectionSettings.cs" />
+    <Compile Include="Wizard\WizardAdapterControl.cs" />
+    <Compile Include="Wizard\WizardControl.cs" />
+    <Compile Include="Wizard\WizardPage.cs" />
+    <Compile Include="Wizard\WritingSystem.cs" />
+    <Compile Include="Wizard\LanguageLookupModelExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <ConfigFiles Include="packages\Geckofx45.64.Linux.45.0.37\build\Geckofx-*.config" />
+    <FirefoxFiles Include="packages\Geckofx45.64.Linux.45.0.37\content\Firefox-Linux64\*.*" />
+  </ItemGroup>
+  <Target Name="AfterBuild">
+    <Copy SourceFiles="@(ConfigFiles)" DestinationFolder="$(OutDir)" />
+    <Copy SourceFiles="@(FirefoxFiles)" DestinationFolder="$(OutDir)/Firefox" />
+  </Target>
 </Project>

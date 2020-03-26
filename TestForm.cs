@@ -29,6 +29,7 @@ namespace TestMono5Sil
 			}
 			catch (Exception ex)
 			{
+				_fileChosenLabel.Text = @"CRASH! " + ex.Message;
 				Console.WriteLine("CRASH: {0}", ex.Message);
 				Console.WriteLine(ex.StackTrace);
 			}
@@ -36,7 +37,28 @@ namespace TestMono5Sil
 
 		private void _wizardButton_Click(object sender, EventArgs e)
 		{
-
+			try
+			{
+				using (var dlg = new TestWizard(false))
+				{
+					var result = dlg.ShowDialog();
+					if (result == DialogResult.OK)
+					{
+						var collection = dlg.GetNewCollectionSettings();
+						_wizardOutputLabel.Text = String.Format("Wizard set project = {0}", collection.CollectionName);
+					}
+					else
+					{
+						_wizardOutputLabel.Text = @"WIZARD CANCELLED";
+					}
+				}
+			}
+			catch (Exception ex)
+			{
+				_wizardOutputLabel.Text = @"CRASH! " + ex.Message;
+				Console.WriteLine("CRASH: {0}", ex.Message);
+				Console.WriteLine(ex.StackTrace);
+			}
 		}
 	}
 }
